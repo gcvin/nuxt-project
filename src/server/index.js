@@ -10,8 +10,7 @@ import { Nuxt, Builder } from 'nuxt'
 import router from './router'
 import mongoose from './db'
 
-/* eslint no-undef: "off" */
-let config = require(path.join(__home, './nuxt.config.js'))
+let config = require('../../nuxt.config.js')
 config.dev = process.env.NODE_ENV !== 'production'
 
 // Init Nuxt.js
