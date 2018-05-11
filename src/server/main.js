@@ -5,9 +5,17 @@ import logger from 'morgan'
 import cookieParser from 'cookie-parser'
 import bodyParser from 'body-parser'
 import session from 'express-session'
+import { Nuxt, Builder } from 'nuxt'
 
 import router from './router'
 import mongoose from './db'
+
+/* eslint no-undef: "off" */
+let config = require(path.join(__home, './nuxt.config.js'))
+config.dev = process.env.NODE_ENV !== 'production'
+
+// Init Nuxt.js
+const nuxt = new Nuxt(config)
 
 const app = express()
 const MongoStore = require('connect-mongo')(session)
@@ -31,6 +39,14 @@ app.use(session({
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', router)
+
+if (config.dev) {
+    const builder = new Builder(nuxt)
+    builder.build()
+}
+
+// Give nuxt middleware to express
+app.use(nuxt.render)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

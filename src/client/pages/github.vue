@@ -70,7 +70,7 @@ export default {
             ]
         }
     },
-    created () {
+    mounted () {
         let branchURL = 'https://api.github.com/repos/gcvin/iview-project/branches'
         this.$http.get(branchURL).then(respose => {
             this.branches = respose.data
@@ -126,6 +126,11 @@ export default {
                     }
                 }, 1000)
             })
+        }
+    },
+    head () {
+        return {
+            title: 'github'
         }
     }
 }

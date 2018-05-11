@@ -15,15 +15,6 @@ let success = {
 // 七牛相关配置信息
 let client = qn.create(config.QINIU)
 
-/* GET home page. */
-router.get('/', function (req, res, next) {
-    res.render('index')
-})
-
-router.get('/stats', function (req, res, next) {
-    res.render('stats')
-})
-
 router.get('/minivue', function (req, res, next) {
     res.sendfile(path.join(__dirname, './views/minivue.html'))
 })
@@ -163,10 +154,6 @@ router.get('/ajax/qndelete', function (req, res, next) {
             msg: '删除成功！'
         })
     })
-})
-
-router.get('*', function (req, res, next) {
-    res.render('index')
 })
 
 export default router

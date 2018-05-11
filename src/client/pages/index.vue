@@ -58,7 +58,7 @@
         <Row type="flex" justify="center" align="middle">
             <Col span="24">
                 <h1>
-                    <img src="@/images/logo.png">
+                    <img src="~assets/img/logo.png">
                 </h1>
                 <h2>
                     <p>{{ slogan }}</p>
@@ -84,7 +84,7 @@
 </template>
 <script>
 import VanillaTilt from 'vanilla-tilt'
-import iconSvg from '@/components/icon-svg'
+import iconSvg from '~/components/icon-svg'
 export default {
     data: function () {
         return {
@@ -94,7 +94,7 @@ export default {
         }
     },
     mounted () {
-        // 3D翻转效果
+    // 3D翻转效果
         VanillaTilt.init(document.querySelector('.tilt'), {
             max: 50,
             speed: 400
@@ -171,6 +171,11 @@ export default {
             return result.then(() => {
                 return realResult
             })
+        }
+    },
+    head () {
+        return {
+            title: 'index'
         }
     }
 }

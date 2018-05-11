@@ -29,8 +29,8 @@
 
 <script>
 import moment from 'moment'
-import Page from '@/components/page'
-import util from '@/libs/util'
+import Page from '~/components/page'
+import util from '~/assets/js/util'
 
 export default {
     data () {
@@ -104,18 +104,15 @@ export default {
             },
             showModal: false,
             editUser: {},
-            isAdd: false
+            isAdd: false,
+            page: 1
         }
     },
     components: {
         Page
     },
-    computed: {
-        page () {
-            return Number(util.getQueryString('page') || 1)
-        }
-    },
-    created () {
+    mounted () {
+        this.page = Number(util.getQueryString('page') || 1)
         this.getUsers()
     },
     methods: {
@@ -169,6 +166,11 @@ export default {
                     this.$Message.error('请检查用户信息是否输入正确!')
                 }
             })
+        }
+    },
+    head () {
+        return {
+            title: 'mongo'
         }
     }
 }

@@ -1,6 +1,6 @@
 <template lang="html">
     <div class="upload">
-        <div class="upload-list" v-for="item in uploadList" :key="item">
+        <div class="upload-list" v-for="(item,index) in uploadList" :key="index">
             <template v-if="item.status === 'finished'">
                 <img :src="item.url">
                 <div class="upload-list-cover">
@@ -98,6 +98,11 @@ export default {
                 this.uploadList = this.$refs.upload.fileList
             }, 0)
         })
+    },
+    head () {
+        return {
+            title: 'upload'
+        }
     }
 }
 </script>

@@ -31,7 +31,7 @@ export default {
     ],
     computed: {
         totalPage () {
-            return Math.ceil(this.total / this.size)
+            return Math.ceil(this.total / this.size) || 1
         },
         isFirst () {
             return this.current === 1

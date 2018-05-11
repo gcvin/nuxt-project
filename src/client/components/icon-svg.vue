@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="css">
 .svg-icon {
     width: 1em;
     height: 1em;

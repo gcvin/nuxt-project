@@ -8,8 +8,8 @@
 
 <script>
 /* eslint no-undef: "off" */
-import busChild from '@/components/bus-child'
-import busParent from '@/components/bus-parent'
+import busChild from '~/components/bus-child'
+import busParent from '~/components/bus-parent'
 
 export default {
     data () {
@@ -18,7 +18,7 @@ export default {
             bold: 'bold'
         }
     },
-    created () {
+    mounted () {
         this.getCaptcha()
     },
     components: {
@@ -28,7 +28,7 @@ export default {
     methods: {
         getCaptcha () {
             this.$http.get('/ajax/get-captcha').then(res => {
-                $('.captcha').html(res.data)
+                $('.captcha').html(res.data).addClass('completed')
             })
         },
         getPositon (e) {
@@ -36,6 +36,11 @@ export default {
 
             target.style.setProperty('--x', `${e.offsetX}px`)
             target.style.setProperty('--y', `${e.offsetY}px`)
+        }
+    },
+    head () {
+        return {
+            title: 'bus'
         }
     }
 }
@@ -92,7 +97,7 @@ export default {
     height: 40px;
     width: 200px;
 
-    &::before {
+    &.completed::before {
         --size: 0;
 
         content: '';
@@ -101,12 +106,12 @@ export default {
         top: var(--y);
         width: var(--size);
         height: var(--size);
-        background: radial-gradient(circle closest-side, #ff9900, #19be6b, #2d8cf0, transparent);
+        background: radial-gradient(circle closest-side, #19be6b, #2d8cf0, transparent);
         transform: translate(-50%, -50%);
         transition: width .2s ease, height .2s ease;
     }
 
-    &:hover::before {
+    &.completed:hover::before {
         --size: 40px;
     }
 }
