@@ -4,7 +4,4 @@
 npm-debug.log
 node_modules/
 .project
-src/server/public/
-src/server/public/*
-src/server/views/index.ejs
-src/server/views/stats.ejs
+.nuxt/
