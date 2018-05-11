@@ -1,6 +1,6 @@
 # iView-project
 
-使用 `@vue/cli` 搭建的 `nodejs` + `mongoDB` + `vue` + `iview` 框架
+使用 `NuxtJS` 搭建的 `nodejs` + `mongoDB` + `vue` + `iview` 框架
 
 1. 开发环境下前后端均可实现热更新
 
@@ -16,12 +16,9 @@ npm install
 ## Run
 ### Development
 ```bush
-// 需要打开两个窗口同时执行
-npm run serve
 npm start
 ```
 ### Production(Build)
 ```bush
 npm run build
-npm start
 ```
