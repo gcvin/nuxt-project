@@ -40,7 +40,7 @@ export default {
     },
     head () {
         return {
-            title: 'bus'
+            title: 'Bus'
         }
     }
 }

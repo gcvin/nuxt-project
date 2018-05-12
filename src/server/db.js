@@ -11,7 +11,7 @@ const DB_URL = 'mongodb://gcvin:gcvin@ds119565.mlab.com:19565/mongo'
 mongoose.connect(DB_URL)
 
 mongoose.connection.on('connected', function () {
-    console.log('Mongoose connection open to ' + DB_URL)
+    // console.log('Mongoose connection open to ' + DB_URL)
 })
 
 mongoose.connection.on('error', function (err) {

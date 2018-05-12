@@ -101,7 +101,7 @@ export default {
     },
     head () {
         return {
-            title: 'upload'
+            title: 'Upload'
         }
     }
 }

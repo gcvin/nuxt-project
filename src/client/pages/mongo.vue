@@ -170,7 +170,7 @@ export default {
     },
     head () {
         return {
-            title: 'mongo'
+            title: 'Mongo'
         }
     }
 }

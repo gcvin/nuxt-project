@@ -3,7 +3,15 @@ const webpack = require('webpack')
 module.exports = {
     srcDir: 'src/client/',
     head: {
-        titleTemplate: '%s - iview project',
+        titleTemplate: '%s - Nuxt',
+        meta: [
+            { charset: 'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+            { hid: 'description', name: 'description', content: 'Nuxt.js project' }
+        ],
+        link: [
+            { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+        ],
         script: [
             { src: '//at.alicdn.com/t/font_552869_v7t8fglyb8tlc8fr.js' }
         ]
@@ -15,7 +23,11 @@ module.exports = {
     router: {
         middleware: 'index'
     },
+    loading: {
+        color: '#4891ff'
+    },
     build: {
+        extractCSS: true,
         vendor: ['iview', 'axios', 'moment', 'jquery'],
         plugins: [
             new webpack.ProvidePlugin({

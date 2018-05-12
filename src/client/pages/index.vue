@@ -175,7 +175,7 @@ export default {
     },
     head () {
         return {
-            title: 'index'
+            title: 'Index'
         }
     }
 }
