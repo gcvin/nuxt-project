@@ -72,11 +72,11 @@
                     <icon-svg icon-class="anquan" />
                 </h2>
                 <ul class="icss">
-                    <li><a href="/bus">Bus</a></li>
-                    <li><a href="/github">Github</a></li>
-                    <li><a href="/mongo">Mongo</a></li>
-                    <li><a href="/upload">Upload</a></li>
-                    <li><a href="/minivue">MiniVue</a></li>
+                    <li><nuxt-link to="/bus">Bus</nuxt-link></li>
+                    <li><nuxt-link to="/github">Github</nuxt-link></li>
+                    <li><nuxt-link to="/mongo">Mongo</nuxt-link></li>
+                    <li><nuxt-link to="/upload">Upload</nuxt-link></li>
+                    <li><nuxt-link to="/minivue">MiniVue</nuxt-link></li>
                 </ul>
             </Col>
         </Row>
@@ -84,7 +84,7 @@
 </template>
 <script>
 import VanillaTilt from 'vanilla-tilt'
-import iconSvg from '~/components/icon-svg'
+import iconSvg from '~/components/icon-svg.vue'
 export default {
     data: function () {
         return {
@@ -94,7 +94,7 @@ export default {
         }
     },
     mounted () {
-    // 3D翻转效果
+        // 3D翻转效果
         VanillaTilt.init(document.querySelector('.tilt'), {
             max: 50,
             speed: 400

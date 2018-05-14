@@ -24,7 +24,7 @@ module.exports = {
         middleware: 'index'
     },
     loading: {
-        color: '#4891ff'
+        color: '#2d8cf0'
     },
     build: {
         extractCSS: true,
