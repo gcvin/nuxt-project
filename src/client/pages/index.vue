@@ -84,7 +84,7 @@
 </template>
 <script>
 import VanillaTilt from 'vanilla-tilt'
-import iconSvg from '~/components/icon-svg.vue'
+import iconSvg from '~/components/icon-svg'
 export default {
     data: function () {
         return {
@@ -109,10 +109,11 @@ export default {
     },
     methods: {
         handleStart () {
-            this.$Modal.info({
-                title: 'Bravo',
-                content: 'Now, enjoy the convenience of iView.'
-            })
+            // this.$Modal.info({
+            //     title: 'Bravo',
+            //     content: 'Now, enjoy the convenience of iView.'
+            // })
+            this.$toast('Now, enjoy the convenience of iView.')
         },
         handleRecursion () {
             let vm = this
