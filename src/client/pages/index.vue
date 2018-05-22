@@ -109,10 +109,6 @@ export default {
     },
     methods: {
         handleStart () {
-            // this.$Modal.info({
-            //     title: 'Bravo',
-            //     content: 'Now, enjoy the convenience of iView.'
-            // })
             this.$toast('Now, enjoy the convenience of iView.')
         },
         handleRecursion () {

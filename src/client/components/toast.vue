@@ -1,5 +1,5 @@
 <template>
-    <div class="wrap" v-if="showWrap" :class="showContent ?'fadein':'fadeout'">{{text}}</div>
+    <div class="wrap" v-if="showWrap" :class="showContent ? 'fadein' : 'fadeout'">{{text}}</div>
 </template>
 
 <style scoped>
