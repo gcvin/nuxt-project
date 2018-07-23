@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Promise - Nuxt</title>
+    <style></style>
+</head>
+<body>
+<script>
+/**
+ * Promise 实现 遵循promise/A+规范
+ */
+
+const PENDING = 'pending'
+const FULFILLED = 'fulfilled'
+const REJECTED = 'rejected'
+
+function Promise (excutor) {
+    let that = this
+    that.status = PENDING
+    that.value = undefined
+    that.reason = undefined
+    that.onFulfilledCallbacks = []
+    that.onRejectedCallbacks = []
+
+    function resolve (value) {
+        if (value instanceof Promise) {
+            return value.then(resolve, reject)
+        }
+
+        setTimeout(() => {
+            if (that.status === PENDING) {
+                that.status = FULFILLED
+                that.value = value
+                that.onFulfilledCallbacks.forEach(cb => cb(that.value))
+            }
+        })
+    }
+
+    function reject (reason) {
+        setTimeout(() => {
+            if (that.status === PENDING) {
+                that.status = REJECTED
+                that.reason = reason
+                that.onRejectedCallbacks.forEach(cb => cb(that.reason))
+            }
+        })
+    }
+
+    try {
+        excutor(resolve, reject)
+    } catch (e) {
+        reject(e)
+    }
+}
+
+/**
+ * [注册fulfilled状态/rejected状态对应的回调函数]
+ * @param  {function} onFulfilled fulfilled状态时 执行的函数
+ * @param  {function} onRejected  rejected状态时 执行的函数
+ * @return {function} newPromsie  返回一个新的promise对象
+ */
+Promise.prototype.then = function (onFulfilled, onRejected) {
+    const that = this
+    let newPromise
+
+    onFulfilled =
+        typeof onFulfilled === 'function' ? onFulfilled : value => value
+    onRejected =
+        typeof onRejected === 'function' ? onRejected : reason => {
+            throw reason
+        }
+
+    if (that.status === FULFILLED) {
+        newPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    let x = onFulfilled(that.value)
+                    resolve(x)
+                    // resolvePromise(newPromise, x, resolve, reject)
+                } catch (e) {
+                    reject(e)
+                }
+            })
+        })
+        return newPromise
+    }
+
+    if (that.status === REJECTED) {
+        newPromise = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                try {
+                    let x = onRejected(that.reason)
+                    resolve(x)
+                    // resolvePromise(newPromise, x, resolve, reject)
+                } catch (e) {
+                    reject(e)
+                }
+            })
+        })
+        return newPromise
+    }
+
+    if (that.status === PENDING) {
+        newPromise = new Promise((resolve, reject) => {
+            that.onFulfilledCallbacks.push((value) => {
+                try {
+                    let x = onFulfilled(value)
+                    resolve(x)
+                    // resolvePromise(newPromise, x, resolve, reject)
+                } catch (e) {
+                    reject(e)
+                }
+            })
+            that.onRejectedCallbacks.push((reason) => {
+                try {
+                    let x = onRejected(reason)
+                    resolve(x)
+                    // resolvePromise(newPromise, x, resolve, reject)
+                } catch (e) {
+                    reject(e)
+                }
+            })
+        })
+        return newPromise
+    }
+}
+
+let mypromise = new Promise((resolve, reject) => {
+    // setTimeout(_ => {
+    resolve('resolve')
+    // }, 10000)
+})
+
+mypromise.then(data => {
+    console.log(data)
+})
+</script>
+</body>
+</html>

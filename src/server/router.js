@@ -19,6 +19,10 @@ router.get('/minivue', function (req, res, next) {
     res.sendfile(path.join(__dirname, './views/minivue.html'))
 })
 
+router.get('/promise', function (req, res, next) {
+    res.sendfile(path.join(__dirname, './views/promise.html'))
+})
+
 router.get('/ajax/get-slogan', function (req, res, next) {
     res.json({
         slogan: 'Welcome to your iView app!'
