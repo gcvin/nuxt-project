@@ -1,19 +1,28 @@
 module.exports = {
   root: true,
-  parser: 'babel-eslint',
   env: {
     browser: true,
     node: true
   },
-  extends: 'standard',
+  parserOptions: {
+    parser: 'babel-eslint'
+  },
+  extends: [
+    'plugin:vue/recommended'
+  ],
   // 校验 .vue 文件
   plugins: [
-    'html'
+    'vue'
   ],
   // 自定义规则
   rules: {
-    "indent": ["error", 4],
-    "no-new": "off"
+    'indent': ['error', 2],
+    'no-new': 'off',
+    'semi': ['error', 'never'],
+    'quotes': ['error', 'single'],
+    'vue/no-parsing-error': ['error', {
+      'x-invalid-end-tag': false
+    }]
   },
   globals: {}
 }

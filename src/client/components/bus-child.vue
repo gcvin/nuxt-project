@@ -1,21 +1,25 @@
 <template lang="html">
-    <Input v-model="value" @on-change="changeValue" placeholder="请输入..."></Input>
+  <Input
+    v-model="value"
+    placeholder="请输入..."
+    @on-change="changeValue"
+  /></Input>
 </template>
 
 <script>
 import bus from '~/assets/js/bus.js'
 
 export default {
-    data: function () {
-        return {
-            value: ''
-        }
-    },
-    methods: {
-        changeValue () {
-            bus.$emit('change-value', this.value)
-        }
+  data: function() {
+    return {
+      value: ''
     }
+  },
+  methods: {
+    changeValue() {
+      bus.$emit('change-value', this.value)
+    }
+  }
 }
 </script>
 

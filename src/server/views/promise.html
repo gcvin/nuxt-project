@@ -16,42 +16,42 @@ const FULFILLED = 'fulfilled'
 const REJECTED = 'rejected'
 
 function Promise (excutor) {
-    let that = this
-    that.status = PENDING
-    that.value = undefined
-    that.reason = undefined
-    that.onFulfilledCallbacks = []
-    that.onRejectedCallbacks = []
+  let that = this
+  that.status = PENDING
+  that.value = undefined
+  that.reason = undefined
+  that.onFulfilledCallbacks = []
+  that.onRejectedCallbacks = []
 
-    function resolve (value) {
-        if (value instanceof Promise) {
-            return value.then(resolve, reject)
-        }
-
-        setTimeout(() => {
-            if (that.status === PENDING) {
-                that.status = FULFILLED
-                that.value = value
-                that.onFulfilledCallbacks.forEach(cb => cb(that.value))
-            }
-        })
+  function resolve (value) {
+    if (value instanceof Promise) {
+      return value.then(resolve, reject)
     }
 
-    function reject (reason) {
-        setTimeout(() => {
-            if (that.status === PENDING) {
-                that.status = REJECTED
-                that.reason = reason
-                that.onRejectedCallbacks.forEach(cb => cb(that.reason))
-            }
-        })
-    }
+    setTimeout(() => {
+      if (that.status === PENDING) {
+        that.status = FULFILLED
+        that.value = value
+        that.onFulfilledCallbacks.forEach(cb => cb(that.value))
+      }
+    })
+  }
 
-    try {
-        excutor(resolve, reject)
-    } catch (e) {
-        reject(e)
-    }
+  function reject (reason) {
+    setTimeout(() => {
+      if (that.status === PENDING) {
+        that.status = REJECTED
+        that.reason = reason
+        that.onRejectedCallbacks.forEach(cb => cb(that.reason))
+      }
+    })
+  }
+
+  try {
+    excutor(resolve, reject)
+  } catch (e) {
+    reject(e)
+  }
 }
 
 /**
@@ -61,79 +61,79 @@ function Promise (excutor) {
  * @return {function} newPromsie  返回一个新的promise对象
  */
 Promise.prototype.then = function (onFulfilled, onRejected) {
-    const that = this
-    let newPromise
+  const that = this
+  let newPromise
 
-    onFulfilled =
+  onFulfilled =
         typeof onFulfilled === 'function' ? onFulfilled : value => value
-    onRejected =
+  onRejected =
         typeof onRejected === 'function' ? onRejected : reason => {
-            throw reason
+          throw reason
         }
 
-    if (that.status === FULFILLED) {
-        newPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                try {
-                    let x = onFulfilled(that.value)
-                    resolve(x)
-                    // resolvePromise(newPromise, x, resolve, reject)
-                } catch (e) {
-                    reject(e)
-                }
-            })
-        })
-        return newPromise
-    }
+  if (that.status === FULFILLED) {
+    newPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          let x = onFulfilled(that.value)
+          resolve(x)
+          // resolvePromise(newPromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+    return newPromise
+  }
 
-    if (that.status === REJECTED) {
-        newPromise = new Promise((resolve, reject) => {
-            setTimeout(() => {
-                try {
-                    let x = onRejected(that.reason)
-                    resolve(x)
-                    // resolvePromise(newPromise, x, resolve, reject)
-                } catch (e) {
-                    reject(e)
-                }
-            })
-        })
-        return newPromise
-    }
+  if (that.status === REJECTED) {
+    newPromise = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          let x = onRejected(that.reason)
+          resolve(x)
+          // resolvePromise(newPromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+    return newPromise
+  }
 
-    if (that.status === PENDING) {
-        newPromise = new Promise((resolve, reject) => {
-            that.onFulfilledCallbacks.push((value) => {
-                try {
-                    let x = onFulfilled(value)
-                    resolve(x)
-                    // resolvePromise(newPromise, x, resolve, reject)
-                } catch (e) {
-                    reject(e)
-                }
-            })
-            that.onRejectedCallbacks.push((reason) => {
-                try {
-                    let x = onRejected(reason)
-                    resolve(x)
-                    // resolvePromise(newPromise, x, resolve, reject)
-                } catch (e) {
-                    reject(e)
-                }
-            })
-        })
-        return newPromise
-    }
+  if (that.status === PENDING) {
+    newPromise = new Promise((resolve, reject) => {
+      that.onFulfilledCallbacks.push((value) => {
+        try {
+          let x = onFulfilled(value)
+          resolve(x)
+          // resolvePromise(newPromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+      that.onRejectedCallbacks.push((reason) => {
+        try {
+          let x = onRejected(reason)
+          resolve(x)
+          // resolvePromise(newPromise, x, resolve, reject)
+        } catch (e) {
+          reject(e)
+        }
+      })
+    })
+    return newPromise
+  }
 }
 
 let mypromise = new Promise((resolve, reject) => {
-    // setTimeout(_ => {
-    resolve('resolve')
-    // }, 10000)
+  // setTimeout(_ => {
+  resolve('resolve')
+  // }, 10000)
 })
 
 mypromise.then(data => {
-    console.log(data)
+  console.log(data)
 })
 </script>
 </body>

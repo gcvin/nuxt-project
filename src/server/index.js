@@ -29,44 +29,46 @@ app.use(logger('dev'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
-app.use(session({
+app.use(
+  session({
     secret: 'session',
     resave: true,
     saveUninitialized: true,
     store: new MongoStore({ mongooseConnection: mongoose.connection })
-}))
+  })
+)
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/', router)
 
 if (config.dev) {
-    const builder = new Builder(nuxt)
-    builder.build()
+  const builder = new Builder(nuxt)
+  builder.build()
 }
 
 // Give nuxt middleware to express
 app.use(nuxt.render)
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-    var err = new Error('Not Found')
-    err.status = 404
-    next(err)
+app.use(function(req, res, next) {
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
 })
 
 // error handler
 // will print stacktrace
-app.use(function (err, req, res, next) {
-    res.status(err.status || 500)
-    res.render('error', {
-        message: err.message,
-        error: err
-    })
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500)
+  res.render('error', {
+    message: err.message,
+    error: err
+  })
 })
 
-const server = app.listen(process.env.PORT || 4000, function () {
-    const port = server.address().port
-    console.log(`Server listening at http://localhost:${port}`)
+const server = app.listen(process.env.PORT || 4000, function() {
+  const port = server.address().port
+  console.log(`Server listening at http://localhost:${port}`)
 })
 
 export default app
