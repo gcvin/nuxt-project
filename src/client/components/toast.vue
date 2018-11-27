@@ -1,8 +1,8 @@
 <template>
   <div
     v-if="showWrap"
-    class="wrap"
     :class="showContent ? 'fadein' : 'fadeout'"
+    class="wrap"
   >
     {{ text }}
   </div>

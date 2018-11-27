@@ -13,11 +13,11 @@
       :data="users"
     />
     <Page
-      url="?page=#num#"
       :current="page"
       :size="10"
       :total="total"
       :number="5"
+      url="?page=#num#"
     />
     <Modal
       v-model="showModal"
@@ -37,7 +37,7 @@
           <Input
             v-model="editUser.userName"
             placeholder="请输入姓名"
-          /></Input>
+          ></Input>
         </FormItem>
         <FormItem
           label="地址"
@@ -46,7 +46,7 @@
           <Input
             v-model="editUser.userAddr"
             placeholder="请输入地址"
-          /></Input>
+          ></Input>
         </FormItem>
         <FormItem
           label="年龄"
@@ -55,7 +55,7 @@
           <Input
             v-model.number="editUser.userAge"
             placeholder="请输入年龄"
-          /></Input>
+          ></Input>
         </FormItem>
         <FormItem
           label="登录时间"

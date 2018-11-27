@@ -25,9 +25,9 @@
       生成PDF
     </Button>
     <Button
+      :disabled="!!second"
       type="primary"
       size="small"
-      :disabled="!!second"
       @click="handleVerCode"
     >
       {{ btnText }}

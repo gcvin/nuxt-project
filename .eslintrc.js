@@ -17,7 +17,6 @@ module.exports = {
   // 自定义规则
   rules: {
     'indent': ['error', 2],
-    'no-new': 'off',
     'semi': ['error', 'never'],
     'quotes': ['error', 'single'],
     'vue/no-parsing-error': ['error', {

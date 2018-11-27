@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="bus">
-    <BusParent :class="[{ active: isActive }, bold]" />
-    <BusChild class="arrow" />
+    <bus-parent :class="[{ active: isActive }, bold]" />
+    <bus-child class="arrow" />
     <div
       class="captcha"
       @click="getCaptcha"

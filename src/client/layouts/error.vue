@@ -22,7 +22,12 @@
 </template>
 <script>
 export default {
-  props: ['error']
+  props: {
+    error: {
+      type: Object,
+      default: () => ({ statusCode: 0, message: '' })
+    }
+  }
 }
 </script>
 

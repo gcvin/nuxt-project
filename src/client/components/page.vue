@@ -2,8 +2,8 @@
   <div class="page">
     <a :href="resolveUrl(current - 1)">
       <Button
-        icon="arrow-left-c"
         :disabled="isFirst"
+        icon="ios-arrow-back"
       />
     </a>
 
@@ -15,7 +15,7 @@
     >
       <Button
         v-if="num === 'prev'"
-        icon="ios-arrow-left"
+        icon="ios-arrow-dropleft"
         class="prev"
       />
       <Button v-else>
@@ -35,7 +35,7 @@
     >
       <Button
         v-if="num === 'next'"
-        icon="ios-arrow-right"
+        icon="ios-arrow-dropright"
         class="next"
       />
       <Button v-else>
@@ -45,15 +45,32 @@
 
     <a :href="resolveUrl(current + 1)">
       <Button
-        icon="arrow-right-c"
         :disabled="isLast"
+        icon="ios-arrow-forward"
       />
     </a>
   </div>
 </template>
 <script>
 export default {
-  props: ['url', 'current', 'size', 'total'],
+  props: {
+    url: {
+      type: String,
+      default: () => ''
+    },
+    current: {
+      type: Number,
+      default: () => 0
+    },
+    size: {
+      type: Number,
+      default: () => 0
+    },
+    total: {
+      type: Number,
+      default: () => 0
+    }
+  },
   computed: {
     totalPage() {
       return Math.ceil(this.total / this.size) || 1

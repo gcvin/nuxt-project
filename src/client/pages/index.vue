@@ -5,14 +5,14 @@
       justify="center"
       align="middle"
     >
-      <Col span="24" />
+      <Col span="24">
       <h1>
         <img src="~assets/img/logo.png">
       </h1>
       <h2>
         <p>{{ slogan }}</p>
         <Button
-          type="ghost"
+          type="primary"
           class="tilt"
           @click="handleStart"
         >
@@ -20,55 +20,55 @@
         </Button>
         <br>
         <br>
-        <IconSvg icon-class="youxiang" />
+        <icon-svg icon-class="youxiang" />
         <Button
-          type="ghost"
+          type="primary"
           @click="handleRecursion"
         >
           递归
         </Button>
         <Button
-          type="ghost"
+          type="primary"
           @click="handlePromise"
         >
           Promise
         </Button>
         <Button
-          type="ghost"
+          type="primary"
           @click="handleAwait"
         >
           Async/Await
         </Button>
-        <IconSvg icon-class="anquan" />
+        <icon-svg icon-class="anquan" />
       </h2>
       <ul class="icss">
         <li>
-          <NuxtLink to="/bus">
+          <nuxt-link to="/bus">
             Bus
-          </NuxtLink>
+          </nuxt-link>
         </li>
         <li>
-          <NuxtLink to="/github">
+          <nuxt-link to="/github">
             Github
-          </NuxtLink>
+          </nuxt-link>
         </li>
         <li>
-          <NuxtLink to="/mongo">
+          <nuxt-link to="/mongo">
             Mongo
-          </NuxtLink>
+          </nuxt-link>
         </li>
         <li>
-          <NuxtLink to="/upload">
+          <nuxt-link to="/upload">
             Upload
-          </NuxtLink>
+          </nuxt-link>
         </li>
         <li>
-          <NuxtLink to="/minivue">
+          <nuxt-link to="/minivue">
             MiniVue
-          </NuxtLink>
+          </nuxt-link>
         </li>
       </ul>
-            </Col>
+      </Col>
     </Row>
   </div>
 </template>

@@ -44,7 +44,7 @@
     >
       <div style="width: 58px;height:58px;line-height: 58px;">
         <Icon
-          type="camera"
+          type="ios-camera"
           size="20"
           style="line-height: 58px;"
         />
