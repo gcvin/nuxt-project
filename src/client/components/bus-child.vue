@@ -3,7 +3,7 @@
     v-model="value"
     placeholder="请输入..."
     @on-change="changeValue"
-  ></Input>
+  />
 </template>
 
 <script>

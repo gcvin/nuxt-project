@@ -37,7 +37,7 @@
           <Input
             v-model="editUser.userName"
             placeholder="请输入姓名"
-          ></Input>
+          />
         </FormItem>
         <FormItem
           label="地址"
@@ -46,7 +46,7 @@
           <Input
             v-model="editUser.userAddr"
             placeholder="请输入地址"
-          ></Input>
+          />
         </FormItem>
         <FormItem
           label="年龄"
@@ -55,7 +55,7 @@
           <Input
             v-model.number="editUser.userAge"
             placeholder="请输入年龄"
-          ></Input>
+          />
         </FormItem>
         <FormItem
           label="登录时间"

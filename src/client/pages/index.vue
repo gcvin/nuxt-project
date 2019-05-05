@@ -5,70 +5,70 @@
       justify="center"
       align="middle"
     >
-      <Col span="24">
-      <h1>
-        <img src="~assets/img/logo.png">
-      </h1>
-      <h2>
-        <p>{{ slogan }}</p>
-        <Button
-          type="primary"
-          class="tilt"
-          @click="handleStart"
-        >
-          Start iView
-        </Button>
-        <br>
-        <br>
-        <icon-svg icon-class="youxiang" />
-        <Button
-          type="primary"
-          @click="handleRecursion"
-        >
-          递归
-        </Button>
-        <Button
-          type="primary"
-          @click="handlePromise"
-        >
-          Promise
-        </Button>
-        <Button
-          type="primary"
-          @click="handleAwait"
-        >
-          Async/Await
-        </Button>
-        <icon-svg icon-class="anquan" />
-      </h2>
-      <ul class="icss">
-        <li>
-          <nuxt-link to="/bus">
-            Bus
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/github">
-            Github
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/mongo">
-            Mongo
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/upload">
-            Upload
-          </nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/minivue">
-            MiniVue
-          </nuxt-link>
-        </li>
-      </ul>
-      </Col>
+      <i-col span="24">
+        <h1>
+          <img src="~assets/img/logo.png">
+        </h1>
+        <h2>
+          <p>{{ slogan }}</p>
+          <Button
+            type="primary"
+            class="tilt"
+            @click="handleStart"
+          >
+            Start iView
+          </Button>
+          <br>
+          <br>
+          <icon-svg icon-class="youxiang" />
+          <Button
+            type="primary"
+            @click="handleRecursion"
+          >
+            递归
+          </Button>
+          <Button
+            type="primary"
+            @click="handlePromise"
+          >
+            Promise
+          </Button>
+          <Button
+            type="primary"
+            @click="handleAwait"
+          >
+            Async/Await
+          </Button>
+          <icon-svg icon-class="anquan" />
+        </h2>
+        <ul class="icss">
+          <li>
+            <nuxt-link to="/bus">
+              Bus
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/github">
+              Github
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/mongo">
+              Mongo
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/upload">
+              Upload
+            </nuxt-link>
+          </li>
+          <li>
+            <nuxt-link to="/minivue">
+              MiniVue
+            </nuxt-link>
+          </li>
+        </ul>
+      </i-col>
     </Row>
   </div>
 </template>
